@@ -9,7 +9,7 @@ const askFormula = new AutoComplete({
     choices: [
         'Permutation',
         'Combination',
-        '2',
+        'Arithmetic Sequence',
     ]
 });
 
@@ -25,12 +25,33 @@ const askSoO = new Input({
     message: 'Set of Objects? '
 });
 
+// For Arithmetic Sequence | First Term of listed numbers
+const askFirstTerm = new Input({
+    name: 'FT',
+    message: 'First Term? '
+});
+
+// For Arithmetic Sequence | Term Number you want
+const askNoT = new Input({
+    name: 'NoT',
+    message: 'What Term Number? '
+});
+
+// For Arithmetic Sequence | Difference of Listed Numbers
+const askDiff = new Input({
+    name: 'Diff',
+    message: 'Difference? '
+});
+
 const run = async () => {
     const formula = await askFormula.run();
 
     if (formula == "Permutation") {
         const NoO = await askNoO.run();
         const SoO = await askSoO.run();
+
+        // Formula
+        console.log("nPr = n!/(n-r)!");
 
         // Convert from Strings to Ints
         let n = +NoO;
@@ -62,6 +83,9 @@ const run = async () => {
         const NoO = await askNoO.run();
         const SoO = await askSoO.run();
 
+        // Formula
+        console.log("nCr = n!/r!(n-r)!");
+
         // Strings to Ints
         let n = +NoO;
         let r = +SoO;
@@ -92,6 +116,26 @@ const run = async () => {
 
         // Solve for Final Number
         let Answer = nFinal / (rFinal * btm2Final);
+
+        console.log(Answer);
+    } else if (formula == "Arithmetic Sequence") {
+        const FT = await askFirstTerm.run();
+        const NoT = await askNoT.run();
+        const Diff = await askDiff.run();
+
+        // Formula
+        console.log("An = a + (n-1)d")
+
+        // Strings to Ints
+        const a = +FT;
+        const n = +NoT;
+        const d = +Diff;
+
+        // Final Ints
+        let Answer;
+        
+        // Number of Terms - 1 & Multiplying by Difference, Then Adding First Term
+        Answer = ((n - 1) * d) + a;
 
         console.log(Answer);
     }
