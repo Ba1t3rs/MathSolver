@@ -10,6 +10,8 @@ const askFormula = new AutoComplete({
         'Permutation',
         'Combination',
         'Arithmetic Sequence',
+        'Area',
+        'Area of Triangle'
     ]
 });
 
@@ -42,6 +44,18 @@ const askDiff = new Input({
     name: 'Diff',
     message: 'Difference? '
 });
+
+// For Areas | Ask Base
+const askBase = new Input({
+    name: 'base',
+    message: 'Base Length?'
+});
+
+// For Areas | Ask Height
+const askHeight = new Input({
+    name: 'height',
+    message: 'Height Length?'
+})
 
 const run = async () => {
     const formula = await askFormula.run();
@@ -138,6 +152,44 @@ const run = async () => {
         Answer = ((n - 1) * d) + a;
 
         console.log(Answer);
+    } else if (formula == "Area") {
+        const base = await askBase.run();
+        const height = await askHeight.run();
+
+        // Formula
+        console.log("A=bh");
+
+        // Convert Strings to Ints
+        let b = +base;
+        let h = +height;
+
+        // Final Ints
+        let a;
+
+        // Multiply Two together
+        a = b * h;
+        console.log(a);
+    } else if (formula == "Area of Triangle") {
+        const base = await askBase.run();
+        const height = await askHeight.run();
+
+        // Formula
+        console.log("A=1/2(b)(h)");
+
+        // Convert Strings to Ints
+        let b = +base;
+        let h = +height;
+
+        // Final Ints
+        let a;
+        let area;
+
+        // Multiply Base and Height
+        area = b * h;
+
+        // Devide 4 Triangle
+        a = area / 2;
+        console.log(a);       
     }
 }
 
