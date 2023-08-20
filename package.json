@@ -10,6 +10,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "enquirer": "^2.3.6"
+    "enquirer": "^2.4.1"
   }
 }
